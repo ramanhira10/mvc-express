@@ -7,8 +7,8 @@ const {
     DeleteUser
 } = require("../controllers/User");
 
-router.get("/all", GetAllUsers);
-router.get("/byId/:id", GetUser);
-router.delete("/:id", DeleteUser);
+router.get("/", GetAllUsers);
+router.get("/:id", GetUser);
+router.delete("/:id/delete", DeleteUser);
 
 module.exports = router;
