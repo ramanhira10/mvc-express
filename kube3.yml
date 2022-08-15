@@ -1,0 +1,40 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube3
+  labels:
+    app: kube3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube3
+  template:
+    metadata:
+      labels:
+        app: kube3
+    spec:
+      containers:
+      - name: kube3
+        image: "mvc-express/third"
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Never
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube3
+  labels:
+    app: kube3
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: kube3
+  type: LoadBalancer
+
